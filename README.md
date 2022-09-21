@@ -13,3 +13,4 @@ This is a **very safe** (🙄) API built to test SonarQube Developer 9.5
 - The SQL Injection vuln in `SuperSecureAPI/Services/WeatherForecastService.cs` line 65 is detected as SECURITY HOTSPOT (Rule csharpsquid:S2077) but NOT as VULNERABILITY
 
 - The SQL Injection vuln in `SuperSecureAPI/Services/WeatherForecastService.cs` line 80 is NOT detected
+
