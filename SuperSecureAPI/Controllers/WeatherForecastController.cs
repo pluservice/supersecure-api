@@ -1,6 +1,7 @@
 using System.Data.SqlClient;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using SuperSecureAPI.Services;
 
 namespace SuperSecureAPI.Controllers;
@@ -141,6 +142,20 @@ public class WeatherForecastController : ControllerBase
         IEnumerable<WeatherForecast> forecasts = await forecastService.GetForecasts4(mapper.Map<WeatherForecastRequest>(request));
         return ForecastsActionResult(forecasts);
     }
+
+
+    [HttpPost("Implementation5")]
+    [ProducesResponseType(typeof(IEnumerable<DTO.WeatherForecast>), 200)]
+    [ProducesResponseType(404)]
+    public async Task<IActionResult> Implementation5([FromBody] DTO.WeatherForecastRequest request)
+    {
+        var v = new { Amount = 108, Message = "Hello" };
+        var vjson = JsonConvert.SerializeObject(v);
+
+        IEnumerable<WeatherForecast> forecasts = await forecastService.GetForecasts4(mapper.Map<WeatherForecastRequest>(request));
+        return ForecastsActionResult(forecasts);
+    }
+
 
     /// <summary>
     /// Helper method to build responses
